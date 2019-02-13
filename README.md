@@ -12,6 +12,13 @@ then open Serial port and Use!!
   - 2n+1:Terminal A
   - 2n+2:Terminal B
   - GND :Terminal C  
-- Arduino 10 ~ 13 OUTPUT LED PIN
+- ` Arduino 10 ~ 13 OUTPUT  ` - LED PIN
   - These Pins made for Rotary Encorder Led Pins
-  - and put 310 ohm resistor by cascade at Led 
+  - and put 310 ohm resistor by cascade at Led
+## Circuit schematic
+    ![image](https://gyazo.ingen084.net/data/ae2202f03abb1de8b6962a1416ccef9f.png)
+    ** !!WARNING!! **
+    This Rotary Encorder ARE NOT PULL UP TO 5V  
+    amd Bypassed to GND by 0.1uF Capacitor
+    IF YOU NEED CREATE THIS THEN YOU MUST ADD Bypass Capacitor and PULLUP Resistor
+
