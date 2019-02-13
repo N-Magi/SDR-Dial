@@ -1,7 +1,7 @@
 # SDR-Dial
 SDR HardWare Dial System
 This Program Can Use ' SDR# ' to control by Rotary Encorder
-![image](https://gyazo.ingen084.net/0052a09ec08b819ce343888fcb14f29f)
+![image](https://gyazo.ingen084.net/data/0052a09ec08b819ce343888fcb14f29f.png)
 ## Usage
 Goto [this](https://github.com/ingen084/SDRSharpPlugins) and Deploy them
 then open Serial port and Use!!
