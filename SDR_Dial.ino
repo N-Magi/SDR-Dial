@@ -4,7 +4,6 @@
 int lastTerA[4] = {1,1,1,1};
 int posEdgeA_B[4];
 int negEdgeA_B[4];
-uint8_t _data;
 
 void SetLedState(uint8_t msg);
 uint8_t ReadEncorder(int cnt);
@@ -23,15 +22,16 @@ void loop()
     if(Serial.available())
         SetLedState(Serial.read());
 
-    _data = 0x00;
+    uint8_t data = 0x00;
     for(int cnt = 0; cnt < 4; cnt++)
     {   
         uint8_t rot = ReadEncorder(cnt);   
-        if(0xFF == rot) continue; 
-        _data = cnt;
-        _data += rot;
-        _data += ~_data << 4;
-        Serial.write(_data);
+        if(0xFF == rot) continue;
+
+        data = cnt;
+        data += rot;
+        data += ~data << 4;
+        Serial.write(data);
     }
     
         
@@ -40,7 +40,7 @@ void loop()
 void SetLedState(uint8_t msg)
 {
     uint8_t led = msg & 0x0f;
-    uint8_t chk = msg & 0xf0;
+    uint8_t chk = 4 >> msg & 0x0f;
     if(chk != ~led) return; //check Packet
 
     for(int cnt = 0;cnt < 4;cnt++)
@@ -53,7 +53,7 @@ void SetLedState(uint8_t msg)
 uint8_t ReadEncorder(int cnt)
 {
     uint8_t result = 0x00;
-    int pinA = (2 * cnt) + 1
+    int pinA = (2 * (cnt + 1));
     int pinB = pinA + 1;
 
     int arrayCnt = (pinA / 2) - 1;
